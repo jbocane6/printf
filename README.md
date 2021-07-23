@@ -2,7 +2,7 @@
     <a href=#><img src="https://raw.githubusercontent.com/jbocane6/logos/main/holberton-logo.png" alt="holberton" /></a></p>
   
   <p align="center">
-    <img align="center" src="" alt="agregar foto de angela" height="30" width="40" />
+    <img align="center" src="https://github.com/anversa-pro/IMG/blob/1d50b2476353bcb13c802cd73e908a5638afad30/FotoR.png" alt="Angela Vergara" height="120" width="120" />
     <a href="https://twitter.com/angelitaversa" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="twitter angela" height="30" width="40" /></a>
   <a href="https://www.linkedin.com/in/angela-vergara-salamanca" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="Linkedin angela" height="30" width="40" /></a>
   <a href="https://github.com/anversa-pro" target="blank"><img align="center" src="https://raw.githubusercontent.com/devicons/devicon/9f4f5cdb393299a81125eb5127929ea7bfe42889/icons/github/github-original.svg" alt="Github angela" height="30" width="40" /></a>
