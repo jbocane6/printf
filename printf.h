@@ -14,7 +14,7 @@
 typedef struct data_type
 {
 	char *type;
-	void (*data_proto)(va_list);
+	void (*data_proto)(va_list, int*);
 } data_t;
 
 /*print_f - emulate the function of printf */
@@ -27,13 +27,13 @@ char *_printmod(va_list list, char format, char *printbuffer, int *counter);
 void pbuffer(char *printbuffer);
 
 /* Prints integers with write */
-void p_int(va_list list);
+void p_int(va_list list, int *counter);
 
 /* Prints an only char  with write*/
-void p_char(va_list list);
+void p_char(va_list list, int *counter);
 
 /* Prints strings */
-void p_string(va_list list);
+void p_string(va_list list, int *counter);
 
 /* _printspecials - picks a function to print a format input */
 char *_printspecials(char format, char *printbuffer, int *i, int *j);

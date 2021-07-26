@@ -18,7 +18,7 @@ int print_f(const char * const format, ...)
 	va_start(list, format);
 	printbuffer = malloc(sizeof(char) * strlen(format));
 
-	if (format == NULL)
+	if (format == NULL || list == NULL)
 		return (0);
 
 	while (format != NULL && format[i] != '\0')
