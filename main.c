@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-    print_f("camilo %c sol %s\nbogota \n%d", 'H', "lberton", 253);
+    print_f("camilo %c sol %d\nbogota \n%s", 'H', 253, "lberton");
     return (0);
 }

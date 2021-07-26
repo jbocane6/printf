@@ -1,40 +1,4 @@
 #include "printf.h"
-#include <stdio.h>
-#include <string.h>
-
-/**
- * pbuffer - Prints and delete chars in buffer.
- * @printbuffer: string to print
-*/
-void pbuffer(char *printbuffer)
-{
-    unsigned int i, j;
-
-    for (i = 0; printbuffer[i] != '\0'; i++)
-        ;
-    /*printf("%s", printbuffer);*/
-    write(1, printbuffer, i);
-
-    for (j = 0; j < i; j++)
-        printbuffer[j] = '\0';
-}
-/**
- * p_char - Prints an only char.
- * @list: list that contains value
- * to print
-*/
-/*void get_func(char format, data_t datos[])
-{
-	int i = 0;
-
-    while (!i)
-    {
-        if (datos[i].type[0] == format)
-            return (datos[i].data_proto);
-        i++;
-    }
-    return (NULL);
-}*/
 
 /**
  * e_newline - Prints \n.
@@ -97,40 +61,6 @@ void e_return()
 }
 
 /**
- * p_int - Prints integers.
- * @list: list that contains value
- * to print
-*/
-void p_int(va_list list)
-{
-	printf("%i", va_arg(list, int));
-}
-
-/**
- * p_char - Prints an only char.
- * @list: list that contains value
- * to print
-*/
-void p_char(va_list list)
-{
-    char i = va_arg(list, int);
-    write(1, &i, 1);
-	/*printf("%c", va_arg(list, int));*/
-}
-
-/**
- * p_string - Prints strings.
- * @list: list that contains value
- * to print
-*/
-void p_string(va_list list)
-{
-	char *str = va_arg(list, char *);
-    write(1, str, strlen(str));
-	/*printf("%s", str);*/
-}
-
-/**
  * print_f - emulate the function of printf
  * @format: Amount of arguments received
  * Return: 0
@@ -138,13 +68,6 @@ void p_string(va_list list)
 
 void print_f(const char * const format, ...)
 {
-    data_t datas[] = {
-		{"c", p_char},
-		{"s", p_string},
-        {"d", p_int},
-        {"i", p_int},
-		{NULL, NULL}
-	};
     char_t especials[] = {
 		{"n", e_newline},
 		{"t", e_tab},
@@ -175,18 +98,8 @@ void print_f(const char * const format, ...)
         }
         else if (special_char == '%')
         {
-            k = 0;
-            while (k < 4)
-            {
-                if (datas[k].type[0] == format[i + 1])
-                {                
-                    pbuffer(printbuffer); /*imprime buffer*/
-                    j = 0;
-                    datas[k].data_proto(list);
-                    break;
-                }
-                k++;
-            }
+            printbuffer = _printmod(list, format[i + 1], printbuffer);
+            j = 0;
             i++;
         }
         else if (special_char == 92)

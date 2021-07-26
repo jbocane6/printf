@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
 /**
  * struct data_type -  Is the structure of prints
@@ -29,4 +31,14 @@ typedef struct char_type{
 
 void print_f(const char * const format, ...);
 
+/* Picks a function to print a format input */
+char *_printmod(va_list list, char format, char * printbuffer);
+/* Prints and delete chars in buffer */
+void pbuffer(char *printbuffer);
+/* Prints integers with write */
+void p_int(va_list list);
+/* Prints an only char  with write*/
+void p_char(va_list list);
+/* Prints strings */
+void p_string(va_list list);
 #endif
