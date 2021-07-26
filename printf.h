@@ -17,10 +17,10 @@ typedef struct data_type{
 } data_t;
 
 /*print_f - emulate the function of printf */
-void print_f(const char * const format, ...);
+int print_f(const char * const format, ...);
 
 /* Picks a function to print a format input */
-char *_printmod(va_list list, char format, char * printbuffer);
+char *_printmod(va_list list, char format, char *printbuffer, unsigned int *counter);
 
 /* Prints and delete chars in buffer */
 void pbuffer(char *printbuffer);

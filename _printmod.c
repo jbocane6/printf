@@ -84,7 +84,7 @@ void p_string(va_list list)
  * Return: Pointer to printbuffer
  */
 
-char *_printmod(va_list list, char format, char *printbuffer)
+char *_printmod(va_list list, char format, char *printbuffer, unsigned int *counter)
 {
 	int k = 0;
 	data_t datas[] = {
@@ -93,6 +93,8 @@ char *_printmod(va_list list, char format, char *printbuffer)
 	    {"d", p_int},
 	    {"i", p_int},
 	    {NULL, NULL}};
+
+	*counter += 0;
 	while (k < 4)
 	{
 		if (datas[k].type[0] == format)

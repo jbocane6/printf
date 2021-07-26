@@ -1,4 +1,5 @@
 #include "printf.h"
+char *_printspecials(char format, char *printbuffer, int *i, int *j);
 
 /**
  * print_f - emulate the function of printf
@@ -6,34 +7,39 @@
  * Return: 0
 */
 
-void print_f(const char * const format, ...)
+int print_f(const char * const format, ...)
 {
 	va_list list;
 	int i = 0, j = 0;
 	char special_char;
 	char *printbuffer;
+	unsigned int counter = 0;
 
 	va_start(list, format);
 	printbuffer = malloc(sizeof(char) * strlen(format));
+
+	if (format == NULL)
+		return (0);
+
 	while (format != NULL && format[i] != '\0')
 	{
 		special_char = format[i];
-		/*printf("%d = %c\n", i, special_char);*/
-		/*printf("%d\n", i);*/
 
 		if (special_char != '%' && special_char != 92)
 		{
+			counter++;
 			printbuffer[j] = format[i];
 			j++;
 		}
 		else if (special_char == '%')
 		{
-			printbuffer = _printmod(list, format[i + 1], printbuffer);
+			printbuffer = _printmod(list, format[i + 1], printbuffer, &counter);
 			j = 0;
 			i++;
 		}
 		else if (special_char == 92)
 		{
+			counter++;
 			printbuffer = _printspecials(format[i + 1], printbuffer, &i, &j);
 		}
 		i++;
@@ -42,7 +48,9 @@ void print_f(const char * const format, ...)
 		pbuffer(printbuffer); /*imprime buffer*/
 	va_end(list);
 	free(printbuffer);
+	return (counter);
 }
+
 /**
  * _printspecials - picks a function to print a format input
  * @format: character to compare
