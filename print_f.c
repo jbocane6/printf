@@ -8,19 +8,16 @@
 */
 void pbuffer(char *printbuffer)
 {
-    unsigned int i, j = strlen(printbuffer);
-    
-    for (i = 0; i < j; i++)
-    {
-        if (printbuffer[i] != '\0')
-        {
-            printf("%c", printbuffer[i]);
-            printbuffer[i] = '\0';
-        }
-        printbuffer[i] = '\0';
-    }
-}
+    unsigned int i, j;
 
+    for (i = 0; printbuffer[i] != '\0'; i++)
+        ;
+    /*printf("%s", printbuffer);*/
+    write(1, printbuffer, i);
+
+    for (j = 0; j < i; j++)
+        printbuffer[j] = '\0';
+}
 /**
  * p_char - Prints an only char.
  * @list: list that contains value
@@ -100,13 +97,25 @@ void e_return()
 }
 
 /**
+ * p_int - Prints integers.
+ * @list: list that contains value
+ * to print
+*/
+void p_int(va_list list)
+{
+	printf("%i", va_arg(list, int));
+}
+
+/**
  * p_char - Prints an only char.
  * @list: list that contains value
  * to print
 */
 void p_char(va_list list)
 {
-	printf("%c", va_arg(list, int));
+    char i = va_arg(list, int);
+    write(1, &i, 1);
+	/*printf("%c", va_arg(list, int));*/
 }
 
 /**
@@ -117,10 +126,8 @@ void p_char(va_list list)
 void p_string(va_list list)
 {
 	char *str = va_arg(list, char *);
-
-	if (str == NULL)
-		str = "(nil)";
-	printf("%s", str);
+    write(1, str, strlen(str));
+	/*printf("%s", str);*/
 }
 
 /**
@@ -134,6 +141,8 @@ void print_f(const char * const format, ...)
     data_t datas[] = {
 		{"c", p_char},
 		{"s", p_string},
+        {"d", p_int},
+        {"i", p_int},
 		{NULL, NULL}
 	};
     char_t especials[] = {
@@ -167,15 +176,13 @@ void print_f(const char * const format, ...)
         else if (special_char == '%')
         {
             k = 0;
-            while (k < 2)
+            while (k < 4)
             {
                 if (datas[k].type[0] == format[i + 1])
-                {
-                
+                {                
                     pbuffer(printbuffer); /*imprime buffer*/
                     j = 0;
                     datas[k].data_proto(list);
-                    i++;
                     break;
                 }
                 k++;
@@ -184,6 +191,7 @@ void print_f(const char * const format, ...)
         }
         else if (special_char == 92)
         {
+            printf("%c", special_char);
             k = 0;
             while (k < 6)
             {
@@ -192,7 +200,6 @@ void print_f(const char * const format, ...)
                     pbuffer(printbuffer); /*imprime buffer*/
                     j = 0;
                     especials[k].data_proto();
-                    i++;
                     break;
                 }
                 k++;
@@ -209,4 +216,5 @@ void print_f(const char * const format, ...)
     if (printbuffer[0] != '\0')
         pbuffer(printbuffer); /*imprime buffer*/
     va_end(list);
+    free(printbuffer);
 }
