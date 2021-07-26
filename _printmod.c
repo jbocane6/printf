@@ -81,10 +81,11 @@ void p_string(va_list list)
  * @list:  argument list
  * @format: character to compare
  * *@printbuffer: pointer to a buffer
+ * *@counter: counts chars printed
  * Return: Pointer to printbuffer
  */
 
-char *_printmod(va_list list, char format, char *printbuffer, unsigned int *counter)
+char *_printmod(va_list list, char format, char *printbuffer, int *counter)
 {
 	int k = 0;
 	data_t datas[] = {

@@ -11,16 +11,17 @@
  * @type: output type
  * @data_proto: print prototype
  */
-typedef struct data_type{
-    char *type;
-    void (*data_proto)(va_list);
+typedef struct data_type
+{
+	char *type;
+	void (*data_proto)(va_list);
 } data_t;
 
 /*print_f - emulate the function of printf */
 int print_f(const char * const format, ...);
 
 /* Picks a function to print a format input */
-char *_printmod(va_list list, char format, char *printbuffer, unsigned int *counter);
+char *_printmod(va_list list, char format, char *printbuffer, int *counter);
 
 /* Prints and delete chars in buffer */
 void pbuffer(char *printbuffer);

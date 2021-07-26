@@ -13,7 +13,7 @@ int print_f(const char * const format, ...)
 	int i = 0, j = 0;
 	char special_char;
 	char *printbuffer;
-	unsigned int counter = 0;
+	int counter = 0;
 
 	va_start(list, format);
 	printbuffer = malloc(sizeof(char) * strlen(format));
