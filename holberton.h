@@ -21,7 +21,7 @@ typedef struct data_type
 int print_f(const char * const format, ...);
 
 /* Picks a function to print a format input */
-char *_printmod(va_list list, char format, char *printbuffer, int *counter);
+char *_printmod(va_list list, char inpt, char *str, int *count, int *j);
 
 /* Prints and delete chars in buffer */
 void pbuffer(char *printbuffer);

@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "holberton.h"
 char *_printspecials(char format, char *printbuffer, int *i, int *j);
 
 /**
@@ -33,8 +33,7 @@ int print_f(const char * const format, ...)
 		}
 		else if (special_char == '%')
 		{
-			printbuffer = _printmod(list, format[i + 1], printbuffer, &counter);
-			j = 0;
+			printbuffer = _printmod(list, format[i + 1], printbuffer, &counter, &j);
 			i++;
 		}
 		else if (special_char == 92)

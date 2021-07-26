@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "holberton.h"
 
 /**
  * pbuffer - Function #1: Prints and delete chars in buffer.
@@ -83,13 +83,14 @@ void p_string(va_list list, int *counter)
 /**
  * _printmod - picks a function to print a format input
  * @list:  argument list
- * @format: character to compare
- * *@printbuffer: pointer to a buffer
- * @counter: counts chars printed
- * Return: Pointer to printbuffer
+ * @inpt: character to compare
+ * *@str: pointer to a printbuffer
+ * @count: counts chars printed
+ * Return: Pointer to str
+
  */
 
-char *_printmod(va_list list, char format, char *printbuffer, int *counter)
+char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 {
 	int k = 0;
 	data_t datas[] = {
@@ -101,13 +102,19 @@ char *_printmod(va_list list, char format, char *printbuffer, int *counter)
 
 	while (k < 4)
 	{
-		if (datas[k].type[0] == format)
+		if (datas[k].type[0] == inpt)
 		{
-			pbuffer(printbuffer); /*imprime buffer*/
-			datas[k].data_proto(list, counter);
+			pbuffer(str); /*imprime buffer*/
+			datas[k].data_proto(list, count);
+			(*j) = 0;
 			break;
 		}
 		k++;
 	}
-	return (printbuffer);
+	if (k >= 4)
+	{
+		str[*j] = inpt; /*add inpt[i+1] to buffer*/
+		(*j)++;
+	}
+	return (str);
 }
