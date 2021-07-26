@@ -17,8 +17,8 @@ typedef struct data_type
 	void (*data_proto)(va_list, int*);
 } data_t;
 
-/*print_f - emulate the function of printf */
-int print_f(const char * const format, ...);
+/*_printf - emulate the function of printf */
+int _printf(const char * const format, ...);
 
 /* Picks a function to print a format input */
 char *_printmod(va_list list, char inpt, char *str, int *count, int *j);

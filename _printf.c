@@ -2,12 +2,12 @@
 char *_printspecials(char format, char *printbuffer, int *i, int *j);
 
 /**
- * print_f - emulate the function of printf
+ * _printf - emulate the function of printf
  * @format: Amount of arguments received
  * Return: 0
 */
 
-int print_f(const char * const format, ...)
+int _printf(const char * const format, ...)
 {
 	va_list list;
 	int i = 0, j = 0;
