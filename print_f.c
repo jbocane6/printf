@@ -180,6 +180,7 @@ void print_f(const char * const format, ...)
                 }
                 k++;
             }
+            i++;
         }
         else if (special_char == 92)
         {
