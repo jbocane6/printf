@@ -39,13 +39,13 @@ void p_int(va_list list, int *counter)
 
 	for (j = 0; size > 0; j++)
 		size /= 10;
-	size = j + 1;
+	size = j;
 
 	str = malloc((size + k) * sizeof(char));
 	if (str == NULL)
 		return;
 
-	for (j = 0; j < size - 1; j++)
+	for (j = 0; j < size; j++)
 	{
 		mod = i % 10;
 		str[size - 1 - j] = mod + '0';
@@ -58,6 +58,7 @@ void p_int(va_list list, int *counter)
 	}
 	*counter += size;
 	write(1, str, size);
+	free(str);
 }
 
 /**
