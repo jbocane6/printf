@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <limits.h>
 
 /**
  * pbuffer - Function #1: Prints and delete chars in buffer.
@@ -17,6 +18,43 @@ void pbuffer(char *printbuffer)
 }
 
 /**
+ * p_intmin - Prints integers whe is equal to INT_MIN.
+ * @i: integer received to print
+ * @counter: counts chars printed
+*/
+
+void p_intmin(int i, int *counter)
+{
+	int j, k, size, mod;
+	char *str;
+	
+	k = (INT_MIN % 10) * -1;
+	i /= -10;
+	size = i;
+
+	for (j = 0; size > 0; j++)
+		size /= 10;
+	size = j + 2;
+
+	str = malloc((size + 1) * sizeof(char));
+	if (str == NULL)
+	{
+		return;
+	}
+	for (j = 0; j < size - 1; j++)
+	{
+		mod = i % 10;
+		str[size - 2 - j] = mod + '0';
+		i /= 10;
+	}
+	str[0] = '-';
+	str[j + 1] = k + '0';
+	*counter += size;
+	write(1, str, size + 1);
+	free(str);
+}
+
+/**
  * p_int - Prints integers.
  * @list: list that contains value
  * to print
@@ -30,15 +68,19 @@ void p_int(va_list list, int *counter)
 	int mod = 1, j, k = 0;
 	char *str;
 
+	if (i == INT_MIN)
+		p_intmin(i, counter);
+	
 	if (i < 0)
 	{
-		i *= -1;
+		i = -i;
 		size = i;
 		k = 1;
 	}
 
 	for (j = 0; size > 0; j++)
 		size /= 10;
+
 	size = j;
 
 	str = malloc((size + k) * sizeof(char));
@@ -48,16 +90,14 @@ void p_int(va_list list, int *counter)
 	for (j = 0; j < size; j++)
 	{
 		mod = i % 10;
-		str[size - 1 - j] = mod + '0';
+		str[size - j + k - 1] = mod + '0';
 		i /= 10;
-		if (k == 1)
-		{
-			str[0] = 45;
-			k = 0;
-		}
 	}
-	*counter += size;
-	write(1, str, size);
+	if (k == 1)
+		str[0] = 45;
+
+	*counter += size + k;
+	write(1, str, size + k);
 	free(str);
 }
 
