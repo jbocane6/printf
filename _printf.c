@@ -23,7 +23,7 @@ int _printf(const char * const format, ...)
 		return (1);
 	}
 
-	if (format == NULL || list == NULL|| size < 1)
+	if (format == NULL || list == NULL || size < 1)
 		return (1);
 
 	while (format != NULL && i < size)
