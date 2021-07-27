@@ -58,7 +58,6 @@ void p_int(va_list list, int *counter)
 	}
 	*counter += size;
 	write(1, str, size);
-	free(str);
 }
 
 /**
