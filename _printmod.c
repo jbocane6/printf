@@ -83,9 +83,20 @@ void p_char(va_list list, int *counter)
 void p_string(va_list list, int *counter)
 {
 	char *str = va_arg(list, char *);
-	int len = strlen(str);
-	*counter += len;
-	write(1, str, len);
+	char *nul = "(null)";
+	int len = 6;
+
+	if (str == NULL)
+	{
+		write(1, nul, len);
+		*counter += 6;
+	}
+	else
+	{
+		len = strlen(str);
+		*counter += len;
+		write(1, str, len);
+	}
 }
 
 /**
