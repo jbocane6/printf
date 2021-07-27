@@ -27,7 +27,7 @@ void p_intmin(int i, int *counter)
 {
 	int j, k, size, mod;
 	char *str;
-	
+
 	k = (INT_MIN % 10) * -1;
 	i /= -10;
 	size = i;
@@ -70,7 +70,7 @@ void p_int(va_list list, int *counter)
 
 	if (i == INT_MIN)
 		p_intmin(i, counter);
-	
+
 	if (i < 0)
 	{
 		i = -i;
