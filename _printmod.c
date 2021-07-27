@@ -82,6 +82,8 @@ void p_int(va_list list, int *counter)
 		size /= 10;
 
 	size = j;
+	if (j == 0)
+		size = 1;
 
 	str = malloc((size + k) * sizeof(char));
 	if (str == NULL)
