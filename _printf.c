@@ -20,8 +20,8 @@ int _printf(const char * const format, ...)
 	printbuffer = malloc(sizeof(char) * strlen(format));
 	if (printbuffer == NULL)
 	{
-		return(0);
-	} 
+		return (0);
+	}
 
 	if (format == NULL || list == NULL)
 		return (0);
