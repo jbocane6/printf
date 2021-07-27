@@ -86,6 +86,7 @@ void p_string(va_list list, int *counter)
  * @inpt: character to compare
  * *@str: pointer to a printbuffer
  * @count: counts chars printed
+ * *@j: loop counter for printbuffer position
  * Return: Pointer to str
 
  */

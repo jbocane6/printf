@@ -14,14 +14,19 @@ int _printf(const char * const format, ...)
 	char special_char;
 	char *printbuffer;
 	int counter = 0;
+	int size = strlen(format);
 
 	va_start(list, format);
 	printbuffer = malloc(sizeof(char) * strlen(format));
+	if (printbuffer == NULL)
+	{
+		return(0);
+	} 
 
 	if (format == NULL || list == NULL)
 		return (0);
 
-	while (format != NULL && format[i] != '\0')
+	while (format != NULL && i < size)
 	{
 		special_char = format[i];
 
@@ -40,6 +45,7 @@ int _printf(const char * const format, ...)
 		{
 			counter++;
 			printbuffer = _printspecials(format[i + 1], printbuffer, &i, &j);
+			i++;
 		}
 		i++;
 	}
@@ -79,6 +85,6 @@ char *_printspecials(char format, char *printbuffer, int *i, int *j)
 		printbuffer[*j] = format; /*add format[i+1] to buffer*/
 		(*j)++;
 	}
-	(*i)++;
+	(*i) += 0;
 	return (printbuffer);
 }
