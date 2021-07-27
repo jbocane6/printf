@@ -64,12 +64,14 @@ void p_intmin(int i, int *counter)
 void p_int(va_list list, int *counter)
 {
 	int i = va_arg(list, int);
-	int size = i;
-	int mod = 1, j, k = 0;
+	int size = i, mod = 1, j, k = 0;
 	char *str;
 
 	if (i == INT_MIN)
+	{
 		p_intmin(i, counter);
+		return;
+	}
 
 	if (i < 0)
 	{
