@@ -59,3 +59,37 @@ void p_reverse(va_list list, int *counter)
 	*counter += len;
 	write(1, rts, len);
 }
+
+/**
+ * p_rot13 - Encodes a string using rot13.
+ * @list: list that contains value
+ * to encode
+ * @counter: counts chars printed
+*/
+void p_rot13(va_list list, int *counter)
+{
+	char *str = va_arg(list, char *), *rts;
+	int i, j, len =strlen(str);
+
+	char str1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
+	char str2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
+
+	rts = malloc(sizeof(char) * len);
+	if (rts == NULL)
+		return;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (j = 0; str1[j] != '\0'; j++)
+		{
+			if (str[i] == str1[j])
+				{
+					rts[i] = str2[j];
+					break;
+				}
+		}
+	}
+	*counter += len;
+	write(1, rts, len);
+	free(rts);
+}

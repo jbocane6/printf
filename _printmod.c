@@ -124,9 +124,10 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 	    {"d", p_int},
 	    {"i", p_int},
 		{"r", p_reverse},
+		{"R", p_rot13},
 	    {NULL, NULL}};
 
-	while (k < 5)
+	while (k < 6)
 	{
 		if (datas[k].type[0] == inpt)
 		{
@@ -137,7 +138,7 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 		}
 		k++;
 	}
-	if (k >= 5)
+	if (k >= 6)
 	{
 		if (inpt == '%')
 		{

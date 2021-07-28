@@ -15,7 +15,7 @@ int main(void)
     len = abs(l) - 1024; */
 
     /* _printf("%i", l); */
-    len = _printf("%r", "Juan Camilo");
+    len = _printf("%R", "JuanCamilo");
     printf("\n%i\n", len);
     /*len2 = printf("%i", l);
     printf("\n");
