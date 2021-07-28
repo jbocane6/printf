@@ -52,7 +52,7 @@ void p_intmin(int i, int *counter)
 	str[0] = '-';
 	str[j + 1] = k + '0';
 	*counter += size;
-	write(1, str, size + 1);
+	write(1, str, size);
 	free(str);
 }
 

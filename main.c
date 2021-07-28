@@ -12,10 +12,9 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%i + %i = %i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-	len2 = printf("%i + %i = %i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-	printf("%d\n", len);
-	printf("%d\n", len2);
+	len = _printf("%d", INT_MIN);
+	len2 = printf("%d", INT_MIN);
+	printf("\n%d\n", len + len2);
 	fflush(stdout);
 	if (len != len2)
 	{
