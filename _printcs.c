@@ -1,10 +1,10 @@
 #include "holberton.h"
 
 /**
- * p_char - Prints an only char.
- * @list: list that contains value
- * to print
+ * p_char - Prints a char.
+ * @list: list that contains value to print
  * @counter: counts chars printed
+ * Return: void
 */
 void p_char(va_list list, int *counter)
 {
@@ -15,9 +15,9 @@ void p_char(va_list list, int *counter)
 
 /**
  * p_string - Prints strings.
- * @list: list that contains value
- * to print
+ * @list: list that contains value to print
  * @counter: counts chars printed
+ * Return: void
 */
 void p_string(va_list list, int *counter)
 {
@@ -40,9 +40,9 @@ void p_string(va_list list, int *counter)
 
 /**
  * p_reverse - Prints strings in reverse.
- * @list: list that contains value
- * to print
+ * @list: list that contains value to print
  * @counter: counts chars printed
+ * Return: void
 */
 void p_reverse(va_list list, int *counter)
 {
@@ -62,14 +62,14 @@ void p_reverse(va_list list, int *counter)
 
 /**
  * p_rot13 - Encodes a string using rot13.
- * @list: list that contains value
- * to encode
+ * @list: list that contains value to encode
  * @counter: counts chars printed
+ * Return: void
 */
 void p_rot13(va_list list, int *counter)
 {
 	char *str = va_arg(list, char *), *rts;
-	int i, j, len =strlen(str);
+	int i, j, len = strlen(str);
 
 	char str1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
 	char str2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
@@ -83,10 +83,10 @@ void p_rot13(va_list list, int *counter)
 		for (j = 0; str1[j] != '\0'; j++)
 		{
 			if (str[i] == str1[j])
-				{
-					rts[i] = str2[j];
-					break;
-				}
+			{
+				rts[i] = str2[j];
+				break;
+			}
 		}
 	}
 	*counter += len;

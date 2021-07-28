@@ -29,7 +29,7 @@ void pbuffer(char *printbuffer);
 /* Prints integers with write */
 void p_int(va_list list, int *counter);
 
-/* Prints an only char  with write*/
+/* Prints a char with write*/
 void p_char(va_list list, int *counter);
 
 /* Prints strings */
