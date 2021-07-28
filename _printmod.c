@@ -63,23 +63,24 @@ void p_intmin(int i, int *counter)
 
 void p_int(va_list list, int *counter)
 {
-	int i = va_arg(list, int);
-	int size = i, mod = 1, j, k = 0;
+		double maxmin = va_arg(list, double);
+	int i, size, mod = 1, j, k = 0;
 	char *str;
 
-	if (i == INT_MIN)
+	if (maxmin <= INT_MIN || maxmin >= INT_MAX)
 	{
-		p_intmin(i, counter);
+		p_intmin(maxmin, counter);
 		return;
 	}
 
+	if (maxmin > INT_MIN || maxmin < INT_MAX)
+		i = size = (int)maxmin;
 	if (i < 0)
 	{
 		i = -i;
 		size = i;
 		k = 1;
 	}
-
 	for (j = 0; size > 0; j++)
 		size /= 10;
 
@@ -99,7 +100,6 @@ void p_int(va_list list, int *counter)
 	}
 	if (k == 1)
 		str[0] = 45;
-
 	*counter += size + k;
 	write(1, str, size + k);
 	free(str);
@@ -123,9 +123,10 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 	    {"s", p_string},
 	    {"d", p_int},
 	    {"i", p_int},
+		{"r", p_reverse},
 	    {NULL, NULL}};
 
-	while (k < 4)
+	while (k < 5)
 	{
 		if (datas[k].type[0] == inpt)
 		{
@@ -136,7 +137,7 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 		}
 		k++;
 	}
-	if (k >= 4)
+	if (k >= 5)
 	{
 		if (inpt == '%')
 		{

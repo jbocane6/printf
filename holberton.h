@@ -38,4 +38,7 @@ void p_string(va_list list, int *counter);
 /* _printspecials - picks a function to print a format input */
 char *_printspecials(char format, char *printbuffer, int *j);
 
+/* p_reverse - Prints strings in reverse*/
+void p_reverse(va_list list, int *counter);
+
 #endif

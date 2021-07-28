@@ -9,14 +9,17 @@
  */
 int main(void)
 {
-    int len = 11;
-    int len2 = 11;
+    int len;
+    /*int len2 = 11;
+    int l = INT_MIN;
+    len = abs(l) - 1024; */
 
-    /* len = _printf("%d", INT_MIN);
+    /* _printf("%i", l); */
+    len = _printf("%r", "Juan Camilo");
+    printf("\n%i\n", len);
+    /*len2 = printf("%i", l);
     printf("\n");
-    len2 = printf("%d", INT_MIN);
-    printf("\n"); */
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
+    printf("Len:[%d]\n", len2) */;
+    /* printf("Len:[%d]\n", len); */
     return (0);
 }

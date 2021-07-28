@@ -1,5 +1,4 @@
 #include "holberton.h"
-char *_printspecials(char format, char *printbuffer, int *j);
 
 /**
  * _printf - emulate the function of printf
@@ -10,14 +9,10 @@ char *_printspecials(char format, char *printbuffer, int *j);
 int _printf(const char * const format, ...)
 {
 	va_list list;
-	int i = 0, j = 0;
-	char special_char;
-	char *printbuffer;
-	int counter = 0;
-	int size;
+	int i = 0, j = 0, counter = 0, size;
+	char special_char, *printbuffer;
 
 	va_start(list, format);
-
 	if (format == NULL || list == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
@@ -25,7 +20,6 @@ int _printf(const char * const format, ...)
 	printbuffer = malloc(sizeof(char) * size);
 	if (printbuffer == NULL)
 		return (-1);
-
 	while (i < size)
 	{
 		special_char = format[i];
