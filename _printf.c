@@ -1,5 +1,5 @@
 #include "holberton.h"
-char *_printspecials(char format, char *printbuffer, int *i, int *j);
+char *_printspecials(char format, char *printbuffer, int *j);
 
 /**
  * _printf - emulate the function of printf
@@ -44,7 +44,7 @@ int _printf(const char * const format, ...)
 		else if (special_char == 92)
 		{
 			counter++;
-			printbuffer = _printspecials(format[i + 1], printbuffer, &i, &j);
+			printbuffer = _printspecials(format[i + 1], printbuffer, &j);
 			i++;
 		}
 		i++;
@@ -60,12 +60,11 @@ int _printf(const char * const format, ...)
  * _printspecials - picks a function to print a format input
  * @format: character to compare
  * *@printbuffer: pointer to a buffer
- * *@i: loop counter for char
  * *@j: loop counte for printbuffer position
  * Return: Pointer to printbuffer
  */
 
-char *_printspecials(char format, char *printbuffer, int *i, int *j)
+char *_printspecials(char format, char *printbuffer, int *j)
 {
 	char *speciallist = "ntbfvr";
 	int k = 0;
@@ -85,6 +84,5 @@ char *_printspecials(char format, char *printbuffer, int *i, int *j)
 		printbuffer[*j] = format; /*add format[i+1] to buffer*/
 		(*j)++;
 	}
-	(*i) += 0;
 	return (printbuffer);
 }

@@ -36,6 +36,6 @@ void p_char(va_list list, int *counter);
 void p_string(va_list list, int *counter);
 
 /* _printspecials - picks a function to print a format input */
-char *_printspecials(char format, char *printbuffer, int *i, int *j);
+char *_printspecials(char format, char *printbuffer, int *j);
 
 #endif
