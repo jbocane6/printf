@@ -37,12 +37,10 @@ void p_intmin(int i, int *counter)
 	for (j = 0; size > 0; j++)
 		size /= 10;
 	size = j + 2;
-
 	str = malloc((size) * sizeof(char));
 	if (str == NULL)
-	{
 		return;
-	}
+
 	for (j = 0; j < size - 1; j++)
 	{
 		mod = i % 10;
@@ -50,7 +48,7 @@ void p_intmin(int i, int *counter)
 		i /= 10;
 	}
 	str[0] = '-';
-	str[j + 1] = k + '0';
+	str[j] = k + '0';
 	*counter += size;
 	write(1, str, size);
 	free(str);

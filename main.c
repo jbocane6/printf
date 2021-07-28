@@ -14,7 +14,7 @@ int main(void)
 
 	len = _printf("%d", INT_MIN);
 	len2 = printf("%d", INT_MIN);
-	printf("\n%d\n", len + len2);
+	/* printf("\n%d\n", len + len2); */
 	fflush(stdout);
 	if (len != len2)
 	{
