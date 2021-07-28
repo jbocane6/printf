@@ -38,7 +38,7 @@ void p_intmin(int i, int *counter)
 		size /= 10;
 	size = j + 2;
 
-	str = malloc((size + 1) * sizeof(char));
+	str = malloc((size) * sizeof(char));
 	if (str == NULL)
 	{
 		return;
