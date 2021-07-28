@@ -68,8 +68,8 @@ void p_int(va_list list, int *counter)
 	int size = 0;
 	int maxmin = va_arg(list, int);
 	char *str;
-	
-	if (maxmin <= INT_MIN || maxmin >= INT_MAX)
+
+	if (maxmin <= INT_MIN)
 	{
 		p_intmin(maxmin, counter);
 		return;
