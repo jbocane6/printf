@@ -13,6 +13,7 @@ void pbuffer(char *printbuffer)
 	/* Calculate printbuffer length and print each character*/
 	for (i = 0; printbuffer[i] != '\0'; i++)
 		;
+	/* Print content on printbuffer */
 	write(1, printbuffer, i);
 	/* Clean and initialize printbuffer after printing*/
 	for (j = 0; j < i; j++)
@@ -23,6 +24,7 @@ void pbuffer(char *printbuffer)
  * p_intmin - Prints integers whe is equal to INT_MIN.
  * @i: integer received to print
  * @counter: counts chars printed
+ * Return: void
 */
 
 void p_intmin(int i, int *counter)
@@ -30,28 +32,32 @@ void p_intmin(int i, int *counter)
 	int j, k, size, mod;
 	char *str;
 
+	/*Reduce one digit of i, turn into positive assign i to size*/
 	k = (INT_MIN % 10) * -1;
 	i /= -10;
 	size = i;
-
+	/* Calculate the amount of digits of size */
 	for (j = 0; size > 0; j++)
 		size /= 10;
+	/* Add 2 to size, to correct the previous reducction */
 	size = j + 2;
+	/* Alloc size memory and verify success allocation */
 	str = malloc((size) * sizeof(char));
 	if (str == NULL)
 		return;
-
+	/* Set in str each digit extracted with mod */
 	for (j = 0; j < size - 1; j++)
 	{
 		mod = i % 10;
 		str[size - 2 - j] = mod + '0';
 		i /= 10;
 	}
+	/*Set first and last digit with the minus and the number removed*/
 	str[0] = '-';
 	str[j] = k + '0';
-	*counter += size;
-	write(1, str, size);
-	free(str);
+	*counter += size; /* Add to the counter length of the number */
+	write(1, str, size); /* Prints the number i*/
+	free(str); /* Release allocated memory */
 }
 
 /**
@@ -59,6 +65,7 @@ void p_intmin(int i, int *counter)
  * @list: list that contains value
  * to print
  * @counter: counts chars printed
+ * Return: Void
 */
 
 void p_int(va_list list, int *counter)
@@ -67,15 +74,15 @@ void p_int(va_list list, int *counter)
 	int maxmin = va_arg(list, int);
 	char *str;
 
-	if (maxmin <= INT_MIN)
+	if (maxmin <= INT_MIN) /* If maxmin is smaller or equal calls a function*/
 	{
 		p_intmin(maxmin, counter);
 		return;
 	}
-	str = _itoa(maxmin, &size);
-	*counter += size;
-	write(1, str, size);
-	free(str);
+	str = _itoa(maxmin, &size); /* Calls a function to convert num into str*/
+	*counter += size; /* Add to the counter length of the number  to counter */
+	write(1, str, size); /* Prints the number i*/
+	free(str); /* Release allocated memory */
 }
 
 /**
@@ -90,6 +97,7 @@ char *_itoa(long number, int *size)
 	long  j = 0, k = 0;
 	char *str;
 
+	/* Save negative sign of number and turn into positive assign i to size*/
 	if (number <= 0)
 	{
 		if (number < 0)
@@ -97,20 +105,23 @@ char *_itoa(long number, int *size)
 		number *= -1;
 		j = 1;
 	}
-	*size = number;
-
+	*size = number; /* Assign original variable to the pointer */
+	/* Calculate the size by counting the digits*/
 	for (; *size > 0; j++)
 		*size /= 10;
 	*size = j;
+	/* Alloc j size memory and verify success allocation */
 	str = malloc(sizeof(char) * j);
 	if (str == NULL)
 		return (NULL);
 
+	/* Assign the last digit into the right position in string */
 	for (; j > 0; j--)
 	{
 		str[j - 1] = (number % 10) + '0';
 		number /= 10;
 	}
+	/*Set first digit with the minus if k indicates negative num */
 	if (k == 1)
 		str[j] = '-';
 	return (str);
@@ -143,13 +154,13 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 		if (datas[k].type[0] == inpt)
 		{
 			pbuffer(str);
-			datas[k].data_proto(list, count);
-			(*j) = 0;
+			datas[k].data_proto(list, count); /* Send args to the function*/
+			(*j) = 0; /* Move j pinter to buffer to its initial position  */
 			break;
 		}
 		k++;
 	}
-	if (k >= 6)  /* Case character it not a modifier add inpt[i+1] to str */
+	if (k >= 6)  /* Case character if not a modifier add inpt[i+1] to str */
 	{
 		if (inpt == '%')
 		{
@@ -157,7 +168,7 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 			*count += 1;
 			(*j)++;
 		}
-		else
+		else /* Add % and non modifier char & sum counter for each char*/
 		{
 			str[*j] = '%';
 			(*j)++;
