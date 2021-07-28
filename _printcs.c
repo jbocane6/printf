@@ -58,6 +58,7 @@ void p_reverse(va_list list, int *counter)
 
 	*counter += len;
 	write(1, rts, len);
+	free(rts);
 }
 
 /**
