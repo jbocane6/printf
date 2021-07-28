@@ -1,25 +1,25 @@
-#include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 #include "holberton.h"
 
 /**
  * main - Entry point
  *
- * Return: Always 0
+ * Return: 0 on success, error code otherwise
  */
 int main(void)
 {
-    int len;
-    /*int len2 = 11;
-    int l = INT_MIN;
-    len = abs(l) - 1024; */
+	int len, len2;
 
-    /* _printf("%i", l); */
-    len = _printf("%R", "JuanCamilo");
-    printf("\n%i\n", len);
-    /*len2 = printf("%i", l);
-    printf("\n");
-    printf("Len:[%d]\n", len2) */;
-    /* printf("Len:[%d]\n", len); */
-    return (0);
+	len = _printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	len2 = printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 }

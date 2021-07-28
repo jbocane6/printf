@@ -5,6 +5,7 @@
  * @format: Amount of arguments received
  * Return: -1 if null inputs, otherwise counter of printed characters
 */
+
 int _printf(const char * const format, ...)
 {
 	va_list list;

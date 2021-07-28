@@ -44,4 +44,6 @@ void p_reverse(va_list list, int *counter);
 /* p_rot13 - Encodes a string using rot13. */
 void p_rot13(va_list list, int *counter);
 
+/* _itoa - converts a number into a string*/
+char * _itoa(long number, int *size);
 #endif

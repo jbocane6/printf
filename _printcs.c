@@ -71,9 +71,11 @@ void p_rot13(va_list list, int *counter)
 	char *str = va_arg(list, char *), *rts;
 	int i, j, len = strlen(str);
 
-	char str1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
-	char str2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"};
+	char str1[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !_-,;?"};
+	char str2[] = {"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm !_-,;?"};
 
+	if (str == NULL)
+		return;
 	rts = malloc(sizeof(char) * len);
 	if (rts == NULL)
 		return;

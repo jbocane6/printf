@@ -20,92 +20,60 @@ void pbuffer(char *printbuffer)
 }
 
 /**
- * p_intmin - Prints an integer equal to INT_MIN.
- * @i: integer received to print
+ * p_int - Prints integers.
+ * @list: list that contains value
+ * to print
  * @counter: counts chars printed
- * Return: void
 */
-void p_intmin(int i, int *counter)
-{
-	int j, k, size, mod;
-	char *str;
-	/*Extract the last digit*/
-	k = (INT_MIN % 10) * -1;
-	i /= -10;
-	size = i;
 
-	/* Calculates length of i */
-	for (j = 0; size > 0; j++)
-		size /= 10;
-	size = j + 2;
-	/* Alloc (size + 1) memory and verify success allocation*/
-	str = malloc((size + 1) * sizeof(char));
-	if (str == NULL)
-	{
-		return;
-	}
-	/* Set at str each digit of i*/
-	for (j = 0; j < size - 1; j++)
-	{
-		mod = i % 10;
-		str[size - 2 - j] = mod + '0';
-		i /= 10;
-	}
-	/*Set first and last digit*/
-	str[0] = '-';
-	str[j + 1] = k + '0';
-	*counter += size; /* Add to the counter length of the number */
-	write(1, str, size + 1); /* Prints the number i */
-	free(str); /* Release allcated memory */
+void p_int(va_list list, int *counter)
+{
+	int size = 0;
+	int maxmin = va_arg(list, int);
+	char *str;
+
+	str = _itoa(maxmin, &size);
+	*counter += size;
+	write(1, str, size);
+	free(str);
 }
 
 /**
- * p_int - function that prints integers and counts it.
- * @list: list that contains values to print
- * @counter: counts printed chars
- * Return: void
-*/
-void p_int(va_list list, int *counter)
+ * _itoa - converts a number into a string
+ * @number: number to convert
+ * @size: pointer to size of new array
+ * Return: string
+ */
+
+char *_itoa(long number, int *size)
 {
-	double maxmin = va_arg(list, double);
-	int i, size, mod = 1, j, k = 0;
+	long  j = 0, k = 0;
 	char *str;
 
-	if (maxmin <= INT_MIN || maxmin >= INT_MAX) /*int cases max & min length*/
+	if (number <= 0)
 	{
-		p_intmin(maxmin, counter);
-		return;
+		if (number < 0)
+			k = 1;
+		number *= -1;
+		j = 1;
 	}
-	if (maxmin > INT_MIN || maxmin < INT_MAX)
-		i = size = (int)maxmin;
-	if (i < 0)
-	{
-		i = -i;
-		size = i;
-		k = 1;
-	}
-	for (j = 0; size > 0; j++)  /* Calculates length of size */
-		size /= 10;
-	size = j;
-	if (j == 0)
-		size = 1;
-	/* Alloc (size + k) memory and verify success allocation*/
-	str = malloc((size + k) * sizeof(char));
+	*size = number;
+
+	for (; *size > 0; j++)
+		*size /= 10;
+	*size = j;
+	str = malloc(sizeof(char) * j);
 	if (str == NULL)
-		return;
-	/* Set at str each digit of i*/
-	for (j = 0; j < size; j++)
+		return (NULL);
+
+	for (; j > 0; j--)
 	{
-		mod = i % 10;
-		str[size - j + k - 1] = mod + '0';
-		i /= 10;
+		str[j - 1] = (number % 10) + '0';
+		number /= 10;
 	}
-	/* Set signal of i in negative case*/
 	if (k == 1)
-		str[0] = 45;
-	*counter += size + k;
-	write(1, str, size + k); /* Prints the full number */
-	free(str); /* Release allocated memory */
+		str[j] = '-';
+	return (str);
 }
 
 /**
