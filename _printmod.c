@@ -20,6 +20,43 @@ void pbuffer(char *printbuffer)
 }
 
 /**
+ * p_intmin - Prints integers whe is equal to INT_MIN.
+ * @i: integer received to print
+ * @counter: counts chars printed
+*/
+
+void p_intmin(int i, int *counter)
+{
+	int j, k, size, mod;
+	char *str;
+
+	k = (INT_MIN % 10) * -1;
+	i /= -10;
+	size = i;
+
+	for (j = 0; size > 0; j++)
+		size /= 10;
+	size = j + 2;
+
+	str = malloc((size + 1) * sizeof(char));
+	if (str == NULL)
+	{
+		return;
+	}
+	for (j = 0; j < size - 1; j++)
+	{
+		mod = i % 10;
+		str[size - 2 - j] = mod + '0';
+		i /= 10;
+	}
+	str[0] = '-';
+	str[j + 1] = k + '0';
+	*counter += size;
+	write(1, str, size + 1);
+	free(str);
+}
+
+/**
  * p_int - Prints integers.
  * @list: list that contains value
  * to print
@@ -31,7 +68,12 @@ void p_int(va_list list, int *counter)
 	int size = 0;
 	int maxmin = va_arg(list, int);
 	char *str;
-
+	
+	if (maxmin <= INT_MIN || maxmin >= INT_MAX)
+	{
+		p_intmin(maxmin, counter);
+		return;
+	}
 	str = _itoa(maxmin, &size);
 	*counter += size;
 	write(1, str, size);
