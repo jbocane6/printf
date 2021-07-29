@@ -55,7 +55,7 @@ void p_intmin(int i, int *counter)
 	str[j] = k + '0';
 	/* Increasing the count of chars in the same amount of digits */
 	*counter += size;
-	write(1, str, size + 1);/* Write the number converted to string */
+	write(1, str, size);/* Write the number converted to string */
 	free(str);/* Free memory */
 }
 
