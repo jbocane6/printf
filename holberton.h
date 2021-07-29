@@ -53,4 +53,10 @@ void p_binary(va_list list, int *counter);
 /* p_octal - converts a number into octal */
 void p_octal(va_list list, int *counter);
 
+/* p_hexalow - converts a number into hexdecimal lowercase */
+void p_hexalow(va_list list, int *counter);
+
+/* p_hexaup - converts a number into hexdecimal uppercase */
+void p_hexaup(va_list list, int *counter);
+
 #endif
