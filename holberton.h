@@ -45,7 +45,7 @@ void p_reverse(va_list list, int *counter);
 void p_rot13(va_list list, int *counter);
 
 /* _itoa - converts a number into a string*/
-char * _itoa(long number, int *size);
+char *_itoa(long number, int *size);
 
 /* p_binary - converts a number into binary */
 void p_binary(va_list list, int *counter);
