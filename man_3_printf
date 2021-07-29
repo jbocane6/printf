@@ -1,16 +1,62 @@
-NAME
-    The name of the command or function, followed by a one-line description of what it does.
-SYNOPSIS
-    In the case of a command, you get a formal description of how to run it and what command line options it takes.
-DESCRIPTION
-    A textual description of the functioning of the command or function.
-EXAMPLES
-    Some examples of common usage.
-SEE ALSO
-    A list of related commands or functions.
-BUGS
-    List known bugs.
-AUTHOR
-   Specify your contact information.
-COPYRIGHT
-    Specify your copyright information.
+.TH man 3 "28 October 2021" "_printf man page"
+. SH NAME
+printf - prints a string with specifier(s) and modifier(s)
+.SH SYNOPSIS
+#include "holberton.h"
+int _printf(const char * const format, ...);
+
+.SH DESCRIPTION
+
+The function _printf() produce output according to a format as described below.  The function _printf() write output to stdout. 
+In C programming language, _printf() function used to print the character, string, integer, octal and hexadecimal values onto the output screen.
+
+_printf() function with %d format specifier displays the value of an integer variable. Similarly %c is used to display character, %s for string variable, %lf for double and %x for hexadecimal variable.
+To generate a newline, we use \n as good as \t for a inline tab in C _printf() statement.
+
+
+.RS 3
+c   prints a character variable
+.br
+s   prints a string variable
+.br
+d   prints an integer and takes an integer value as a signed decimal integer
+.br
+i   prints an integer and takes in a decimal, hexadecimal, or octal type
+.br
+R   encodes a string into ROT13
+.br
+r   prints an string in reverse
+.br
+b   prints a binary number
+.br
+u   prints an unsigned integer
+.br
+o   prints an octal number
+.br
+x   prints a hexadecimal number
+.br
+X   prints a hexadecimal number in caps
+.br
+.RE
+
+.SH RETURN
+The function will return the number of characters printed. Null or -1 when string empty among other unsuccesfull cases.
+.SH EXAMPLES
+To print "Marvelous week" you would do as follows:
+
+ #include "Holberton.h"
+ _printf("%s", "Marvelous week");
+
+To print "It is 28" you would do as follows, where day is a pointer to a integer:
+
+ #include "Holberton.h"
+ _printf("It is %d", day);
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+### :email: mail :email:
+
+ * [Angela Vergara](3423@holbertonschool.com) 
+ * [Juan Camilo Bocanegra](3311@holbertonschool.com)
