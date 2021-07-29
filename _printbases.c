@@ -11,7 +11,7 @@
 void p_binary(va_list list, int *counter)
 {
 	long num = va_arg(list, long), size, i;
-	char *str, zero = 0;
+	char *str, zero = '0';
 
 	if (num == 0)
 	{
@@ -53,7 +53,7 @@ void p_binary(va_list list, int *counter)
 void p_octal(va_list list, int *counter)
 {
 	long num = va_arg(list, long), size, i;
-	char *str, zero = 0;
+	char *str, zero = '0';
 
 	if (num == 0)
 	{
@@ -95,7 +95,7 @@ void p_octal(va_list list, int *counter)
 void p_hexalow(va_list list, int *counter)
 {
 	long num = va_arg(list, long), size, i;
-	char *str, zero = 0;
+	char *str, zero = '0';
 	char *hexa = "0123456789abcdef";
 
 	if (num == 0)
@@ -138,7 +138,7 @@ void p_hexalow(va_list list, int *counter)
 void p_hexaup(va_list list, int *counter)
 {
 	long num = va_arg(list, long), size, i;
-	char *str, zero = 0;
+	char *str, zero = '0';
 	char *hexa = "0123456789ABCDEF";
 
 	if (num == 0)
