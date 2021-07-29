@@ -49,17 +49,18 @@ void p_reverse(va_list list, int *counter)
 {
 	char *str = va_arg(list, char *);
 	int len = strlen(str), i;
-	char *rts = malloc(sizeof(char) * len);
+	char *rts = malloc(sizeof(char) * len); /* Allocates memory*/
 
 	if (rts == NULL)
 		return;
 
+	/* Rewrites the string in reverse */
 	for (i = 0; i < len; i++)
 		rts[i] = str[len - 1 - i];
 
-	*counter += len;
-	write(1, rts, len);
-	free(rts);
+	*counter += i; /* Increase conter of printed chars */
+	write(1, rts, i);
+	free(rts); /* Free memory */
 }
 
 /**
@@ -98,7 +99,7 @@ void p_rot13(va_list list, int *counter)
 			}
 		}
 	}
-	*counter += len;
-	write(1, rts, len);
-	free(rts);
+	*counter += i; /* Increase conter of printed chars */
+	write(1, rts, i);
+	free(rts); /* Free memory */
 }

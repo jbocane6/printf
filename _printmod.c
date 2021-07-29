@@ -56,14 +56,13 @@ void p_intmin(int i, int *counter)
 	str[0] = '-';
 	str[j] = k + '0';
 	*counter += size; /* Add to the counter length of the number */
-	write(1, str, size); /* Prints the number i*/
+	write(1, str, size + 1); /* Prints the number i*/
 	free(str); /* Release allocated memory */
 }
 
 /**
  * p_int - Prints integers.
- * @list: list that contains value
- * to print
+ * @list: list that contains value to print
  * @counter: counts chars printed
  * Return: Void
 */
@@ -140,27 +139,21 @@ char *_itoa(long number, int *size)
 char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 {
 	int k = 0;
-	data_t datas[] = {
-		{"c", p_char},
-		{"s", p_string},
-		{"d", p_int},
-		{"i", p_int},
-		{"r", p_reverse},
-		{"R", p_rot13},
-		{NULL, NULL}};
+	data_t datas[] = {{"c", p_char}, {"s", p_string}, {"d", p_int}, {"i", p_int},
+		{"r", p_reverse}, {"R", p_rot13}, {"b", p_binary}, {NULL, NULL}};
 
-	while (k < 6) /*Search for coincidence into the structure*/
+	while (k < 7) /*Search for coincidence into the structure*/
 	{
 		if (datas[k].type[0] == inpt)
 		{
 			pbuffer(str);
-			datas[k].data_proto(list, count); /* Send args to the function*/
 			(*j) = 0; /* Move j pinter to buffer to its initial position  */
+			datas[k].data_proto(list, count); /* Send args to the function*/
 			break;
 		}
 		k++;
 	}
-	if (k >= 6)  /* Case character if not a modifier add inpt[i+1] to str */
+	if (k >= 7)  /* Case character if not a modifier add inpt[i+1] to str */
 	{
 		if (inpt == '%')
 		{
@@ -177,5 +170,5 @@ char *_printmod(va_list list, char inpt, char *str, int *count, int *j)
 			(*j)++;
 		}
 	}
-	return (str);
+	return (str); /* Return buffer */
 }

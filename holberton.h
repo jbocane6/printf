@@ -46,4 +46,11 @@ void p_rot13(va_list list, int *counter);
 
 /* _itoa - converts a number into a string*/
 char * _itoa(long number, int *size);
+
+/* p_binary - converts a number into binary */
+void p_binary(va_list list, int *counter);
+
+/* p_octal - converts a number into octal */
+void p_octal(va_list list, int *counter);
+
 #endif

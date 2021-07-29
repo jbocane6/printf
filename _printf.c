@@ -44,7 +44,7 @@ int _printf(const char * const format, ...)
 		}
 	}
 	if (printbuffer[0] != '\0')
-		pbuffer(printbuffer); /* Prints buffer */
+		pbuffer(printbuffer); /* Calls pbuffer to Prints buffer */
 	va_end(list);
 	free(printbuffer); /* Release alloc size memory */
 	return (counter);
