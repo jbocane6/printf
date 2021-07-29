@@ -49,3 +49,4 @@ This function evaluates the string input characters one by one looking for match
 <flowchart _printspecials>
 
 <flowchart _printmod>
+    <a href=#><img src="https://raw.githubusercontent.com/jbocane6/logos/main/Diagram_printf_function.png" /></a>
