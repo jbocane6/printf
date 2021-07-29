@@ -1,4 +1,4 @@
-.TH man 3 "28 October 2021" "_printf man page"
+.TH man 3 "28 Jul 2021" "_printf man page"
 . SH NAME
 printf - prints a string with specifier(s) and modifier(s)
 .SH SYNOPSIS
@@ -41,15 +41,16 @@ X   prints a hexadecimal number in caps
 
 .SH RETURN
 The function will return the number of characters printed. Null or -1 when string empty among other unsuccesfull cases.
+
 .SH EXAMPLES
 To print "Marvelous week" you would do as follows:
 
- #include "Holberton.h"
- _printf("%s", "Marvelous week");
+ #include "holberton.h"
+ _printf(h%s", "Marvelous week");
 
 To print "It is 28" you would do as follows, where day is a pointer to a integer:
 
- #include "Holberton.h"
+ #include "holberton.h"
  _printf("It is %d", day);
 
 .SH BUGS

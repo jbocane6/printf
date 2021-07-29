@@ -25,42 +25,42 @@ A string is written, characters are usually copied literally into the function's
 
 ## About this Repo
 #### Requirments to built it
-  * Files should be compiled with gcc 4.8.4
-  * No more than 5 functions per file
-  * Files should end with a new line
-  * No global variables allowed
+  * Files should be compiled with gcc 4.8.4  
+  * No more than 5 functions per file  
+  * Files should end with a new line  
+  * No global variables allowed  
 
 This project contains four C files, a header, and a man-page with all functions, prototypes, and descriptions you need to play with this version.  
 
 **C files**  
-**_printf.c:**
+**_printf.c:**  
 _printf : This function evaluates the string input characters one by one looking for matching characters with de modifiers % and / to call a function for each case if there is no coincidence just prints all strings without modifications.  
-*_printspecials : Search into a string of special modifiers to print the modifier (\n \t \b \f \v \r) or return the characters.
-**_printmod.c**
-pbuffer : Function that prints and delete chars in buffer.
-p_intmin : Prints integers longer or equal than Min and Max integer limits.
+*_printspecials : Search into a string of special modifiers to print the modifier (\n \t \b \f \v \r) or return the characters.  
+**_printmod.c**  
+pbuffer : Function that prints and delete chars in buffer.  
+p_intmin : Prints integers longer or equal than Min and Max integer limits.  
 p_int : Evaluates if the number is longer than integer limits and calls p-intmin otherwise prints integers calling _itoa
-_itoa : converts an integer number into a string
-_printmod : Search into a structure of specifiers (%c, %s, %d, %i, %R, %,r %b, %o, %x, %X) a function to print a format input
-**_printcs.c**
-p_char : Prints a char.
-p_string : Prints strings.
-p_reverse : Prints strings in reverse.
-p_rot13 : Encodes a string using rot13.
-**_printbases.c**
-p_binary : converts a number into binary
-p_octal : converts a number into octal
-p_hexalow : converts a number into hexdecimal lowercase
-p_hexaup : converts a number into hexdecimal uppercase
+_itoa : converts an integer number into a string  
+_printmod : Search into a structure of specifiers (%c, %s, %d, %i, %R, %,r %b, %o, %x, %X) a function to print a format input  
+**_printcs.c**  
+p_char : Prints a char.  
+p_string : Prints strings.  
+p_reverse : Prints strings in reverse.  
+p_rot13 : Encodes a string using rot13.  
+**_printbases.c**  
+p_binary : converts a number into binary  
+p_octal : converts a number into octal  
+p_hexalow : converts a number into hexdecimal lowercase  
+p_hexaup : converts a number into hexdecimal uppercase  
 
-**Header**
-holberton.h: This file contains prototypes for all the functions and the struct for data and function relation.
+**Header**  
+holberton.h: This file contains prototypes for all the functions and the struct for data and function relation.  
 
-**Man-page**
-man_3_printf : Custom man page for _printf function.
+**Man-page**  
+man_3_printf : Custom man page for _printf function.  
 
 To access the Man Page. ` man_3_printf ` directly in a terminal, download the file and move it to the directory /usr/share/man/man1 where the system stores man pages for User shell commands.  
-You can view it by typing the following command: ` cd  /usr/share/man/man1 `  Otherwise into the project directory by typing `./man_3_printf `..
+You can view it by typing the following command: ` cd  /usr/share/man/man1 `  Otherwise into the project directory by typing `./man_3_printf `..  
 
 
 ### How to use this project
@@ -86,38 +86,38 @@ Example of main.c file:
 >        unsigned int ui;
 >        void *addr;
 >
->        len = _printf("Let's try to printf a simple sentence.\n");
->        ui = (unsigned int)INT_MAX + 1024;
->        addr = (void *)0x7ffe637541f0;
->        _printf("Length:[%d, %i]\n", len, len);
->        _printf("Negative:[%d]\n", -762534);
->        _printf("Unsigned:[%u]\n", ui);
->        _printf("Unsigned octal:[%o]\n", ui);
->        _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
->        _printf("Character:[%c]\n", 'H');
->        _printf("String:[%s]\n", "I am a string !");
->        _printf("Address:[%p]\n", addr);
->        len = _printf("Percent:[%%]\n");
->        _printf("Len:[%d]\n", len);
->        _printf("Unknown:[%r]\n");
->        return (0);
+>        len = _printf("Let's try to printf a simple sentence.\n");  
+>        ui = (unsigned int)INT_MAX + 1024;  
+>        addr = (void *)0x7ffe637541f0;  
+>        _printf("Length:[%d, %i]\n", len, len);  
+>        _printf("Negative:[%d]\n", -762534);  
+>        _printf("Unsigned:[%u]\n", ui);  
+>        _printf("Unsigned octal:[%o]\n", ui);  
+>        _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);  
+>        _printf("Character:[%c]\n", 'H');  
+>        _printf("String:[%s]\n", "I am a string !");  
+>        _printf("Address:[%p]\n", addr);  
+>        len = _printf("Percent:[%%]\n");  
+>        _printf("Len:[%d]\n", len);  
+>        _printf("Unknown:[%r]\n");  
+>        return (0);  
 >    }
 >
 
 Expected results after compiling and executing:
 
 >       Let's try to printf a simple sentence.
->       Length:[39, 39]
->       Negative:[-762534]
->       Unsigned:[2147484671]
->       Unsigned octal:[20000001777]
->       Unsigned hexadecimal:[800003ff, 800003FF]
->       Character:[H]
->       String:[I am a string !]
->       Address:[0x7ffe637541f0]
->       Percent:[%]
->       Len:[12]
->       Unknown:[%r]
+>       Length:[39, 39]  
+>       Negative:[-762534]  
+>       Unsigned:[2147484671]  
+>       Unsigned octal:[20000001777]  
+>       Unsigned hexadecimal:[800003ff, 800003FF]  
+>       Character:[H]  
+>       String:[I am a string !]  
+>       Address:[0x7ffe637541f0]  
+>       Percent:[%]  
+>       Len:[12]  
+>       Unknown:[%r]  
 
 
 ### Flowchart
